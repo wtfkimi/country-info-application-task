@@ -37,10 +37,11 @@ export class AuthController {
   @UseGuards(AuthGuard('local'))
   @Public()
   @Post('login')
-  async login(@Request() req: AuthenticatedRequest) {
+  async login(@Request() req: AuthenticatedRequest): Promise<AccessToken> {
     return await this.authService.login(req.user);
   }
 
+  @ApiOperation({ summary: 'Register to application' })
   @ApiBody({
     type: RegisterDto,
   })
@@ -54,7 +55,7 @@ export class AuthController {
   })
   @Public()
   @Post('register')
-  async register(@Body() registerBody: RegisterDto): Promise<AccessToken | BadRequestException> {
+  async register(@Body() registerBody: RegisterDto): Promise<AccessToken> {
     return await this.authService.register(registerBody);
   }
 }

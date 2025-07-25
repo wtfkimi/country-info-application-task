@@ -1,5 +1,5 @@
 import { Body, Controller, HttpStatus, Param, Post } from '@nestjs/common';
-import { ApiBody, ApiParam, ApiResponse } from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiParam, ApiResponse } from '@nestjs/swagger';
 import { CurrentUser } from '../infrastructure/decorators/current-user.decorator';
 import { EventUserDto } from './dto/user.dto';
 import { AddEventHolidayResponse, AddEventToOtherUserForbiddenResponse } from './swagger/user.swagger';
@@ -10,6 +10,7 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @ApiOperation({ summary: 'Endpoint: Add national holidays of a specific country to the user’s calendar' })
   @ApiParam({ name: 'userId' })
   @ApiBody({
     type: EventUserDto,

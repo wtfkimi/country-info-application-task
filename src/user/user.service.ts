@@ -31,7 +31,7 @@ export class UserService {
     idChange: string;
     userId: number;
     eventDto: EventUserDto;
-  }) {
+  }): Promise<{ quantity: number; events: string[] }> {
     if (Number(idChange) !== userId) throw new ForbiddenException('Not allowed to modify or add other user calendar');
 
     const user = await this.userRepository.findOneById(userId);
@@ -42,7 +42,7 @@ export class UserService {
     });
     const holidaysNames = holidays.map((holidays) => holidays.localName);
 
-    const newEvents = [];
+    const newEvents: string[] = [];
 
     if (holidays.length === 0) return { quantity: holidays.length, events: newEvents };
 

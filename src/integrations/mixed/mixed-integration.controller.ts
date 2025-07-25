@@ -1,5 +1,5 @@
 import { Controller, Get, HttpStatus, Param } from '@nestjs/common';
-import { ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { GetCountryInfo } from './dto/mixed-integration.dto';
 import { MixedIntegrationService } from './mixed-integration.service';
 import { CountryResponseDto } from './swagger/mixed-integration.swagger';
@@ -9,6 +9,7 @@ import { CountryResponseDto } from './swagger/mixed-integration.swagger';
 export class MixedIntegrationController {
   constructor(private readonly mixedIntegrationService: MixedIntegrationService) {}
 
+  @ApiOperation({ summary: 'Endpoint: Get Country Info' })
   @ApiParam({ name: 'country', description: 'iso2 format' })
   @ApiResponse({
     type: CountryResponseDto,

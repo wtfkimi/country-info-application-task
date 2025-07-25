@@ -11,7 +11,7 @@ export class MixedIntegrationService {
     private readonly countriesNowService: CountriesNowService,
   ) {}
 
-  async getCountryInfo(country: string) {
+  async getCountryInfo(country: string): Promise<{ info: Country; population: PopulationCountry; flag: string }> {
     const [info, allPopulations, allFlagImages]: [Country, PopulationCountry[], Flag[]] = await Promise.all([
       this.dateNagerService.getCountryInfo(country),
       this.countriesNowService.getAllPopulation(),

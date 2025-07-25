@@ -6,11 +6,11 @@ import { CalendarRepository } from './repository/calendar.repository';
 export class CalendarService {
   constructor(private readonly calendarRepository: CalendarRepository) {}
 
-  async findCalendarByYear({ year, id }: { year: number; id: number }) {
+  async findCalendarByYear({ year, id }: { year: number; id: number }): Promise<CalendarEntity> {
     return this.calendarRepository.getCalendarByYear({ year, id });
   }
 
-  async saveEvent(event: CalendarEntity) {
+  async saveEvent(event: CalendarEntity): Promise<CalendarEntity> {
     return await this.calendarRepository.save(event);
   }
 }

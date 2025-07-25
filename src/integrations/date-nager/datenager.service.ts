@@ -29,7 +29,13 @@ export class DatenagerService {
     return res.data;
   }
 
-  async getHolidayByYearAndCountryCode({ year, countryCode }: { year: number; countryCode: string }) {
+  async getHolidayByYearAndCountryCode({
+    year,
+    countryCode,
+  }: {
+    year: number;
+    countryCode: string;
+  }): Promise<Holiday[]> {
     const res: AxiosResponse<Holiday[]> = await lastValueFrom(
       this.httpService.get(`${this.configService.get('API_DATE_NAGER')}/PublicHolidays/${year}/${countryCode}`),
     );

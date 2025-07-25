@@ -52,5 +52,5 @@ export class HttpExceptionFilterSwagger {
     required: true,
     description: 'error message description\n P.S could be also array of string string[]',
   })
-  message: string | string[] = undefined;
+  message: string | string[];
 }
