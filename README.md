@@ -13,9 +13,10 @@ npm install
 
 #### 2. Setup MySQL database container
 ```bash
-docker run --name db_mysql \
-  -e MYSQL_ROOT_PASSWORD=12356789 \
-  -p 3306:3306 \
+docker run -p 3306:3306 --name db_mysql \
+  -e MYSQL_ROOT_PASSWORD=password \
+  -v $(pwd)/mysql-init/my.cnf:/etc/mysql/conf.d/my.cnf \
+  -v $(pwd)/mysql-init/init.sql:/docker-entrypoint-initdb.d/init.sql \
   -d mysql:8.0.40
 ```
 
