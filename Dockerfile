@@ -8,6 +8,8 @@ COPY tsconfig.*.json ./
 
 RUN npm install --production --no-optional
 
+RUN npm install -g @nestjs/cli
+
 COPY . .
 # Here we copy .env files to container which is not secure(for better experience in security use vault or docker secrets), copied because it's test task;
 
