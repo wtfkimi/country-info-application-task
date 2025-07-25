@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, HttpStatus, Post, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, HttpStatus, Post, Request, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Public } from '../infrastructure/decorators/public.decorator';
